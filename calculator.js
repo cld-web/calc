@@ -1,7 +1,6 @@
 <script>
-    const API_BASE = "https://crudcrud.com/api/SEU_TOKEN_AQUI/clientes";
+    const API_BASE = "https://crudcrud.com/api/dad9e48a7d6248e4af068a4c7ab0e9f8";
 
-    // Função para cadastrar cliente
     async function cadastrarCliente() {
         const nome = document.getElementById("nome").value;
         const email = document.getElementById("email").value;
@@ -25,7 +24,6 @@
         }
     }
 
-    // Função para listar clientes
     async function listarClientes() {
         try {
             const response = await fetch(API_BASE);
@@ -50,7 +48,6 @@
         }
     }
 
-    // Função para excluir cliente
     async function excluirCliente(id) {
         try {
             await fetch(`${API_BASE}/${id}`, { method: "DELETE" });
@@ -60,6 +57,5 @@
         }
     }
 
-    // Carregar lista ao abrir a página
     window.onload = listarClientes;
 </script>
