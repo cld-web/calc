@@ -1,59 +1,65 @@
-// Função para buscar endereço pelo CEP usando a API ViaCEP
-async function buscarEndereco() {
-  const cep = document.getElementById("cep").value.replace(/\D/g, "");
-  if (cep.length !== 8) {
-    alert("Digite um CEP válido com 8 dígitos.");
-    return;
-  }
+<script>
+    const API_BASE = "https://crudcrud.com/api/SEU_TOKEN_AQUI/clientes";
 
-  try {
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    const data = await response.json();
+    // Função para cadastrar cliente
+    async function cadastrarCliente() {
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
 
-    if (data.erro) {
-      alert("CEP não encontrado.");
-      return;
+        if (!nome || !email) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        const cliente = { nome, email };
+
+        try {
+            await fetch(API_BASE, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(cliente)
+            });
+            listarClientes();
+        } catch (error) {
+            console.error("Erro ao cadastrar cliente:", error);
+        }
     }
 
-    // Preenche os campos do formulário
-    document.getElementById("logradouro").value = data.logradouro || "";
-    document.getElementById("bairro").value = data.bairro || "";
-    document.getElementById("cidade").value = data.localidade || "";
-    document.getElementById("estado").value = data.uf || "";
-  } catch (error) {
-    alert("Erro ao buscar o CEP.");
-    console.error(error);
-  }
-}
+    // Função para listar clientes
+    async function listarClientes() {
+        try {
+            const response = await fetch(API_BASE);
+            const clientes = await response.json();
 
-// Função para salvar os dados no Web Storage
-function salvarDados() {
-  const dados = {
-    nome: document.getElementById("nome").value,
-    cep: document.getElementById("cep").value,
-    logradouro: document.getElementById("logradouro").value,
-    bairro: document.getElementById("bairro").value,
-    cidade: document.getElementById("cidade").value,
-    estado: document.getElementById("estado").value,
-  };
+            const lista = document.getElementById("listaClientes");
+            lista.innerHTML = "";
 
-  localStorage.setItem("formularioEndereco", JSON.stringify(dados));
-  alert("Dados salvos com sucesso!");
-}
+            clientes.forEach(cliente => {
+                const item = document.createElement("li");
+                item.textContent = `${cliente.nome} - ${cliente.email}`;
 
-// Função para carregar os dados salvos
-function carregarDados() {
-  const dadosSalvos = localStorage.getItem("formularioEndereco");
-  if (dadosSalvos) {
-    const dados = JSON.parse(dadosSalvos);
-    document.getElementById("nome").value = dados.nome || "";
-    document.getElementById("cep").value = dados.cep || "";
-    document.getElementById("logradouro").value = dados.logradouro || "";
-    document.getElementById("bairro").value = dados.bairro || "";
-    document.getElementById("cidade").value = dados.cidade || "";
-    document.getElementById("estado").value = dados.estado || "";
-  }
-}
+                const btnExcluir = document.createElement("button");
+                btnExcluir.textContent = "Excluir";
+                btnExcluir.onclick = () => excluirCliente(cliente._id);
 
-// Carrega os dados automaticamente ao abrir a página
-window.onload = carregarDados;
+                item.appendChild(btnExcluir);
+                lista.appendChild(item);
+            });
+        } catch (error) {
+            console.error("Erro ao listar clientes:", error);
+        }
+    }
+
+    // Função para excluir cliente
+    async function excluirCliente(id) {
+        try {
+            await fetch(`${API_BASE}/${id}`, { method: "DELETE" });
+            listarClientes();
+        } catch (error) {
+            console.error("Erro ao excluir cliente:", error);
+        }
+    }
+
+    // Carregar lista ao abrir a página
+    window.onload = listarClientes;
+</script>

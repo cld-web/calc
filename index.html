@@ -1,33 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Formulário com CEP e Web Storage</title>
-  <script src="calculator.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Cadastro de Clientes</title>
 </head>
 <body>
-  <h2>Formulário de Endereço</h2>
-  <form onsubmit="event.preventDefault(); salvarDados();">
-    <label for="nome">Nome:</label><br>
-    <input type="text" id="nome" name="nome"><br><br>
+    <h1>Cadastro de Clientes</h1>
 
-    <label for="cep">CEP:</label><br>
-    <input type="text" id="cep" name="cep">
-    <button type="button" onclick="buscarEndereco()">Buscar Endereço</button><br><br>
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" placeholder="Digite o nome">
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Digite o email">
+        <br><br>
+        <button onclick="cadastrarCliente()">Cadastrar Cliente</button>
+    </div>
 
-    <label for="logradouro">Logradouro:</label><br>
-    <input type="text" id="logradouro" name="logradouro"><br><br>
-
-    <label for="bairro">Bairro:</label><br>
-    <input type="text" id="bairro" name="bairro"><br><br>
-
-    <label for="cidade">Cidade:</label><br>
-    <input type="text" id="cidade" name="cidade"><br><br>
-
-    <label for="estado">Estado:</label><br>
-    <input type="text" id="estado" name="estado"><br><br>
-
-    <button type="submit">Salvar Dados</button>
-  </form>
+    <h2>Lista de Clientes</h2>
+    <ul id="listaClientes"></ul>
 </body>
 </html>
