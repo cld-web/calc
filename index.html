@@ -2,25 +2,75 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência Criativa Web</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>Cadastro de Clientes</h1>
+    <header>
+        <div class="logo">Agência Criativa Web</div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
 
-    <div>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Digite o nome">
-        <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Digite o email">
-        <br><br>
-        <button id="btnCadastrar">Cadastrar Cliente</button>
-    </div>
+    <section id="home" class="banner">
+        <h1>Bem-vindo à Agência Criativa Web</h1>
+        <p>Transformamos ideias em experiências digitais únicas.</p>
+    </section>
 
-    <h2>Lista de Clientes</h2>
-    <ul id="listaClientes"></ul>
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma agência apaixonada por design e tecnologia, dedicada a criar soluções digitais inovadoras que conectam marcas e pessoas.</p>
+    </section>
 
-    <script type="module" src="./js/app.js"></script>
-    <script src="calculator.js"></script>
+    <section id="servicos">
+        <h2>Serviços</h2>
+        <div class="grid-servicos">
+            <div class="card">🎨 Design Gráfico</div>
+            <div class="card">💻 Desenvolvimento Web</div>
+            <div class="card">📱 UX/UI Design</div>
+            <div class="card">🚀 Branding</div>
+            <div class="card">📊 Marketing Digital</div>
+            <div class="card">🛒 E-commerce</div>
+        </div>
+    </section>
+
+    <section id="depoimentos">
+        <h2>Depoimentos</h2>
+        <blockquote>"A Agência Criativa Web transformou nossa marca em uma experiência digital incrível!" – Cliente A</blockquote>
+        <blockquote>"Profissionais dedicados e criativos, recomendo sem dúvidas." – Cliente B</blockquote>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>📍 Rua Exemplo, 123 – São Paulo/SP</p>
+        <p>📞 (11) 99999-9999</p>
+        <p>✉ contato@agenciacriativaweb.com</p>
+
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Agência Criativa Web - Todos os direitos reservados</p>
+    </footer>
 </body>
 </html>
