@@ -1,0 +1,183 @@
+scss/
+  _base.scss
+  _variaveis.scss
+  _mixins.scss
+  _layout.scss
+  _componentes.scss
+  estilos.scss   // arquivo principal
+css/
+  estilos.css    // compilado
+
+// Paleta de cores
+$cor-primaria: #0077b6;
+$cor-secundaria: #00b4d8;
+$cor-escura: #222;
+$cor-clara: #f9f9f9;
+$cor-texto: #333;
+
+// Tipografia
+$fonte-base: 'Arial', sans-serif;
+
+// Espaçamentos
+$espacamento-sm: 1rem;
+$espacamento-md: 2rem;
+$espacamento-lg: 4rem;
+
+// Mixin para espaçamento vertical
+@mixin espacamento-vertical($valor) {
+  margin-top: $valor;
+  margin-bottom: $valor;
+}
+
+// Mixin para botão básico
+@mixin botao($bg, $color) {
+  background: $bg;
+  color: $color;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem;
+  font-size: 1rem;
+
+  &:hover {
+    background: darken($bg, 10%);
+  }
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $fonte-base;
+  line-height: 1.6;
+  color: $cor-texto;
+  background-color: $cor-clara;
+}
+
+h2 {
+  @include espacamento-vertical(calc($espacamento-sm / 2));
+  font-size: 2rem;
+  color: $cor-primaria;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $espacamento-sm $espacamento-md;
+  background: $cor-escura;
+  color: #fff;
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+
+    &-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+  }
+}
+
+.banner {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, $cor-primaria, $cor-secundaria);
+  color: #fff;
+  text-align: center;
+  padding: $espacamento-md;
+}
+
+.section {
+  padding: $espacamento-lg $espacamento-md;
+}
+
+.footer {
+  text-align: center;
+  padding: $espacamento-sm;
+  background: $cor-escura;
+  color: #fff;
+}
+
+.services {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  &__card {
+    background: #fff;
+    padding: $espacamento-md;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $espacamento-sm;
+  max-width: 400px;
+
+  &__input,
+  &__textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  &__button {
+    @include botao($cor-primaria, #fff);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__nav {
+      display: none;
+      flex-direction: column;
+      background: $cor-escura;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      padding: $espacamento-sm;
+
+      &--show {
+        display: flex;
+      }
+    }
+
+    &__toggle {
+      display: block;
+    }
+  }
+}
+
+@use 'variaveis';
+@use 'mixins';
+@use 'base';
+@use 'layout';
+@use 'componentes';
