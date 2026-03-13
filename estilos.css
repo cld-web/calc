@@ -1,142 +1,152 @@
-/* Reset básico */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Tipografia e cores */
+/* Utilitários */
+.u-text-center {
+  text-align: center;
+}
+
+.u-mb-sm {
+  margin-bottom: 1rem;
+}
+
+.u-mb-md {
+  margin-bottom: 2rem;
+}
+
+.u-py-lg {
+  padding: 4rem 2rem;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-}
-
-/* Cabeçalho */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: #222;
-    color: #fff;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-nav ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #fff;
-}
-
-/* Banner */
-.banner {
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, #0077b6, #00b4d8);
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
-}
-
-/* Seções */
-section {
-    padding: 4rem 2rem;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
 }
 
 h2 {
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    color: #0077b6;
+  font-size: 2rem;
+  color: #0077b6;
 }
 
-/* Serviços com Grid */
-.grid-servicos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #222;
+  color: #fff;
 }
 
-.card {
-    background: #fff;
-    padding: 2rem;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.header__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-/* Formulário */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 400px;
+.header__nav {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
 }
 
-input, textarea, button {
-    padding: 0.8rem;
-    font-size: 1rem;
+.header__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
 }
 
-button {
-    background: #0077b6;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+.header__toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
 }
 
-button:hover {
-    background: #023e8a;
+.banner {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #222;
-    color: #fff;
+.section {
+  padding: 4rem 2rem;
 }
 
-/* Responsividade */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.services__card {
+  background: #fff;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.form__input,
+.form__textarea,
+.form__button {
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+.form__button {
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  background: #023e8a;
+}
+
 @media (max-width: 768px) {
-    nav ul {
-        display: none;
-        flex-direction: column;
-        background: #222;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 1rem;
-    }
+  .header__nav {
+    display: none;
+    flex-direction: column;
+    background: #222;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+  }
 
-    nav ul.show {
-        display: flex;
-    }
+  .header__nav--show {
+    display: flex;
+  }
 
-    .menu-toggle {
-        display: block;
-    }
+  .header__toggle {
+    display: block;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  color: #fff;
 }
