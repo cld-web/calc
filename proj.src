@@ -1,0 +1,9 @@
+/src
+  /components
+    ProdutoCard.jsx
+  /pages
+    Catalogo.jsx
+  /assets
+    (imagens, ícones, etc.)
+  App.jsx
+  main.jsx
