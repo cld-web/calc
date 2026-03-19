@@ -1,26 +1,3 @@
-/src
-  /components
-    ProdutoCard.jsx
-  /pages
-    Catalogo.jsx
-  /assets
-    (imagens, ícones, etc.)
-  App.jsx
-  main.jsx
-  
-import React from "react";
-
-export default function ProdutoCard({ nome, preco, imagem, descricao }) {
-  return (
-    <div className="produto-card">
-      <img src={imagem} alt={nome} width="150" />
-      <h2>{nome}</h2>
-      <p>{descricao}</p>
-      <strong>R$ {preco}</strong>
-    </div>
-  );
-}
-// src/pages/Catalogo.jsx
 import React, { useState, useEffect } from "react";
 import ProdutoCard from "../components/ProdutoCard";
 
@@ -28,7 +5,6 @@ export default function Catalogo() {
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Simulação de API com useEffect
   useEffect(() => {
     setTimeout(() => {
       setProdutos([
@@ -49,7 +25,6 @@ export default function Catalogo() {
     }, 2000);
   }, []);
 
-  // Formulário controlado
   const [novoProduto, setNovoProduto] = useState({
     nome: "",
     preco: "",
@@ -112,22 +87,3 @@ export default function Catalogo() {
     </div>
   );
 }
-// src/App.jsx
-import React from "react";
-import Catalogo from "./pages/Catalogo";
-
-function App() {
-  return <Catalogo />;
-}
-
-export default App;
-// src/main.jsx
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
