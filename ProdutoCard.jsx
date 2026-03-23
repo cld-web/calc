@@ -1,15 +1,4 @@
-/src
-  /components
-    ProdutoCard.jsx
-  /pages
-    Catalogo.jsx
-  /assets
-    (imagens, ícones, etc.)
-  App.jsx
-  main.jsx
-  
-import React from "react";
-
+// src/components/ProdutoCard.jsx
 export default function ProdutoCard({ nome, preco, imagem, descricao }) {
   return (
     <div className="produto-card">

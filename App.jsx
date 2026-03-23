@@ -1,8 +1,19 @@
-import React from "react";
+// src/App.jsx
+import { useState } from "react";
 import Catalogo from "./pages/Catalogo";
+import FormularioProduto from "./components/FormularioProduto";
 
-function App() {
-  return <Catalogo />;
+export default function App() {
+  const [produtos, setProdutos] = useState([]);
+
+  const adicionarProduto = (novoProduto) => {
+    setProdutos([...produtos, novoProduto]);
+  };
+
+  return (
+    <div>
+      <FormularioProduto onAddProduto={adicionarProduto} />
+      <Catalogo produtosExternos={produtos} />
+    </div>
+  );
 }
-
-export default App;
