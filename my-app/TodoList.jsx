@@ -1,12 +1,15 @@
 // src/components/TodoList.jsx
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { filteredTodosSelector } from "../selectors/filteredTodosSelector";
-import { filterAtom } from "../atoms/filterAtom";
-import TodoItem from "./TodoItem";
+import { RecoilRoot } from "recoil";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
-export default function TodoList() {
-  const todos = useRecoilValue(filteredTodosSelector);
-  const setFilter = useSetRecoilState(filterAtom);
+export default function App() {
+  return (
+    <RecoilRoot>
+      <h1>Todo List com Recoil</h1>
+      <TodoForm />
+      <TodoList />
+    </RecoilRoot>
 
   return (
     <div>
